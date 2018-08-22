@@ -49,15 +49,42 @@ export const Tabs = TabNavigator({
   },
 });
 
-export const createRootNavigator = () => {
-  return StackNavigator(
-    {
-      Tabs: {
-        screen: Tabs,
-        navigationOptions: {
-          gesturesEnabled: false
-        }
-      }
+export const BookcaseStack = StackNavigator({
+    Bookcase: {
+      screen: Bookcase,
+      navigationOptions: ({navigation}) => ({
+        header: null,
+      }),
     },
-  );
-};
+    EditBook: {
+      screen: EditBook,
+      navigationOptions: ({navigation}) => ({
+        header: null,
+        tabBarVisible: false,
+        gesturesEnabled: false
+      }),
+    },
+  });
+
+  export const createRootNavigator = () => {
+    return StackNavigator(
+      {
+        BookcaseStack: {
+          screen: BookcaseStack,
+          navigationOptions: {
+            gesturesEnabled: false
+          }
+        },
+        Tabs: {
+          screen: Tabs,
+          navigationOptions: {
+            gesturesEnabled: false
+          }
+        }
+      },
+      {
+        headerMode: "none",
+        mode: "modal"
+      }
+    );
+  };
