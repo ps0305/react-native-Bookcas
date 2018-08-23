@@ -5,13 +5,3 @@ import {
   View
 } from 'react-native';
 import App from './App.js';
-
-class Boookcase extends Component {
-  render() {
-    return (
-      
-        <App/>
-      
-    );
-  }
-}
